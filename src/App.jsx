@@ -37,7 +37,13 @@ function App() {
 				<Switch>
 					<Route exact path={"/"}>
 						<SearchBar cities={cities} setCities={setCities} />
-						<Cards cities={cities} onClose={onClose} />
+						{cities != "" ? (
+							<Cards cities={cities} onClose={onClose} />
+						) : (
+							<h2 className="text-2xl text-center mt-20 mx-20 text-indigo-500 font-semibold bg-yellow-300 block p-5 rounded-lg pointer-events-none">
+								Agrega tu primera ciudad!!
+							</h2>
+						)}
 					</Route>
 					<Route exact path={"/contact"} component={Contacto} />
 					<Route path="/about" component={About} />
