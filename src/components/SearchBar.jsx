@@ -27,8 +27,21 @@ const SearchBar = ({ cities, setCities }) => {
 							clouds: recurso.clouds.all,
 							latitud: recurso.coord.lat,
 							longitud: recurso.coord.lon,
+							humedad: recurso.main.humidity,
+							presion: recurso.main.pressure,
 						};
-						setCities((cities) => [...cities, ciudad]);
+						if (cities.length > 0) {
+							let exist = false;
+							cities.forEach((el) => {
+								if (el.id === ciudad.id) exist = true;
+							});
+							if (exist) {
+								alert(`Ya agregaste ${recurso.name}`);
+								return setCities(() => [...cities]);
+							} else return setCities(() => [...cities, ciudad]);
+						} else setCities(() => [...cities, ciudad]);
+
+						//
 					} else {
 						alert("Ciudad no encontrada");
 					}

@@ -7,17 +7,27 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Contacto from "./components/pages/Contacto";
 import Err404NotFound from "./components/pages/Err404NotFound";
 import About from "./components/pages/About";
+import CityDetails from "./components/CityDetails";
 
 function App() {
 	const [activeModal, setActiveModal] = useState(false);
 	const [hamburgerisActive, setIsActive] = useState(false);
 
 	const [cities, setCities] = useState([]);
+	const [ciudad, setCiudad] = useState([]);
 
-	const onClose = (name) => {
+	const onClose = (id) => {
 		confirm("Seguro que desea eliminar la ciudad?")
-			? setCities((cities) => cities.filter((c) => c.name !== name))
+			? setCities((cities) => cities.filter((c) => c.id !== id))
 			: null;
+	};
+
+	const showMore = (id) => {
+		let city = cities.filter((c) => {
+			if (c.id === id) return c;
+		});
+		console.log(city);
+		setCiudad(city[0]);
 	};
 
 	return (
@@ -38,7 +48,11 @@ function App() {
 					<Route exact path={"/"}>
 						<SearchBar cities={cities} setCities={setCities} />
 						{cities != "" ? (
-							<Cards cities={cities} onClose={onClose} />
+							<Cards
+								cities={cities}
+								onClose={onClose}
+								showMore={showMore}
+							/>
 						) : (
 							<h2 className="text-2xl text-center mt-20 mx-20 text-indigo-500 font-semibold bg-yellow-300 block p-5 rounded-lg pointer-events-none">
 								Agrega tu primera ciudad!!
@@ -47,6 +61,9 @@ function App() {
 					</Route>
 					<Route exact path={"/contact"} component={Contacto} />
 					<Route path="/about" component={About} />
+					<Route path="/details/:name/:id">
+						<CityDetails ciudad={ciudad} />
+					</Route>
 
 					<Route path="*" component={Err404NotFound} />
 				</Switch>

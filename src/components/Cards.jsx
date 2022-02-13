@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-const Cards = ({ cities, onClose }) => {
+const Cards = ({ cities, onClose, showMore }) => {
 	return (
 		<>
 			{cities.length >= 0 ? (
@@ -13,8 +13,10 @@ const Cards = ({ cities, onClose }) => {
 								name={el.name}
 								min={el.min}
 								max={el.max}
-								key={el.id}
+								id={el.id}
 								onClose={onClose}
+								showMore={showMore}
+								key={el.id}
 							/>
 						);
 					})}

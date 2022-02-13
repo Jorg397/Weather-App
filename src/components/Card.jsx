@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "./recycle/Button";
 
 const Card = (props) => {
@@ -41,16 +42,22 @@ const Card = (props) => {
 					textColor="text-white"
 					size="p-1"
 					rounded="md"
-					onClick={() => props.onClose(props.name)}
+					onClick={() => props.onClose(props.id)}
 				/>
 			</div>
-			{/* <Button
-				text="Ver Mas"
-				bg="bg-yellow-300"
-				textColor="text-indigo-500"
-				size="p-2"
-				rounded="lg"
-			/> */}
+			<div className=" mr-10 mt-10">
+				<Link
+					to={`/details/${props.name}/${props.id}`}
+					onClick={() => props.showMore(props.id)}
+				>
+					<button
+						className={`uppercase bg-yellow-300 text-indigo-600 font-medium text-lg border rounded-md hover:bg-yellow-200 shadow-md p-2`}
+					>
+						Ver mas
+					</button>
+				</Link>
+			</div>
+			{/*  */}
 		</div>
 	);
 };
