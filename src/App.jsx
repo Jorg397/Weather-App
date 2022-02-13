@@ -15,7 +15,7 @@ function App() {
 	const [cities, setCities] = useState([]);
 
 	const onClose = (name) => {
-		confirm("Seguro que desea elimar la ciudad?")
+		confirm("Seguro que desea eliminar la ciudad?")
 			? setCities((cities) => cities.filter((c) => c.name !== name))
 			: null;
 	};
