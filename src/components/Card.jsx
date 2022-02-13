@@ -44,13 +44,13 @@ const Card = (props) => {
 					onClick={() => props.onClose(props.name)}
 				/>
 			</div>
-			<Button
+			{/* <Button
 				text="Ver Mas"
 				bg="bg-yellow-300"
 				textColor="text-indigo-500"
 				size="p-2"
 				rounded="lg"
-			/>
+			/> */}
 		</div>
 	);
 };
