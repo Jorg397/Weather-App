@@ -9,7 +9,7 @@ const Card = (props) => {
 		>
 			<div className="text-white font-medium flex flex-col">
 				<h2 className="text-3xl content-center text-yellow-300">
-					{props.name}
+					{props.name} <span className="">{props.country}</span>
 				</h2>
 				<p className="text-lg m-1">
 					Min:{" "}

@@ -17,6 +17,7 @@ const Cards = ({ cities, onClose, showMore }) => {
 								onClose={onClose}
 								showMore={showMore}
 								key={el.id}
+								country={el.country}
 							/>
 						);
 					})}

@@ -29,6 +29,7 @@ const SearchBar = ({ cities, setCities }) => {
 							longitud: recurso.coord.lon,
 							humedad: recurso.main.humidity,
 							presion: recurso.main.pressure,
+							country: recurso.sys.country,
 						};
 						if (cities.length > 0) {
 							let exist = false;
