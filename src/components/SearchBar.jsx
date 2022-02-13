@@ -6,30 +6,36 @@ const SearchBar = ({ cities, setCities }) => {
 
 	function onSearch(ciudad) {
 		let apiKey = `4ae2636d8dfbdc3044bede63951a019b`;
-		fetch(
-			`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric`
-		)
-			.then((r) => r.json())
-			.then((recurso) => {
-				if (recurso.main !== undefined) {
-					const ciudad = {
-						min: Math.round(recurso.main.temp_min),
-						max: Math.round(recurso.main.temp_max),
-						img: recurso.weather[0].icon,
-						id: recurso.id,
-						wind: recurso.wind.speed,
-						temp: recurso.main.temp,
-						name: recurso.name,
-						weather: recurso.weather[0].main,
-						clouds: recurso.clouds.all,
-						latitud: recurso.coord.lat,
-						longitud: recurso.coord.lon,
-					};
-					setCities((cities) => [...cities, ciudad]);
-				} else {
-					alert("Ciudad no encontrada");
-				}
-			});
+
+		if (inputValue === "") alert("No ingresaste ningun texto");
+		else {
+			fetch(
+				`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric`
+			)
+				.then((r) => r.json())
+				.then((recurso) => {
+					if (recurso.main !== undefined) {
+						const ciudad = {
+							min: Math.round(recurso.main.temp_min),
+							max: Math.round(recurso.main.temp_max),
+							img: recurso.weather[0].icon,
+							id: recurso.id,
+							wind: recurso.wind.speed,
+							temp: recurso.main.temp,
+							name: recurso.name,
+							weather: recurso.weather[0].main,
+							clouds: recurso.clouds.all,
+							latitud: recurso.coord.lat,
+							longitud: recurso.coord.lon,
+						};
+						setCities((cities) => [...cities, ciudad]);
+					} else {
+						alert("Ciudad no encontrada");
+					}
+				});
+		}
+
+		setInputValue("");
 	}
 	return (
 		<div className="sm:w-full">
