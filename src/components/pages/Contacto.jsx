@@ -22,12 +22,13 @@ const Contacto = () => {
 	return (
 		<div className="flex justify-center mt-14 p-10 bg-indigo-500 flex-col h-full rounded-lg mx-5 md:w-1/2 md:mx-auto md:items-center sm:">
 			<form
+				name="contact"
 				className="flex flex-col w-full md:items-center"
 				onSubmit={(e) => {
 					e.preventDefault();
 				}}
 				method="POST"
-				data-netlify="true"
+				netlify
 			>
 				<h3 className="self-center text-white text-2xl font-medium -mt-5 mb-5">
 					Contáctanos
