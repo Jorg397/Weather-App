@@ -85,6 +85,7 @@ const Contacto = () => {
 					resize="none"
 				></textarea>
 				<Button
+					type="submit"
 					text="Enviar"
 					textColor="text-indigo-500"
 					size="p-3"
