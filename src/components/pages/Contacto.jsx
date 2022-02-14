@@ -26,6 +26,8 @@ const Contacto = () => {
 				onSubmit={(e) => {
 					e.preventDefault();
 				}}
+				method="POST"
+				data-netlify="true"
 			>
 				<h3 className="self-center text-white text-2xl font-medium -mt-5 mb-5">
 					Contáctanos
@@ -79,6 +81,7 @@ const Contacto = () => {
 					cols="10"
 					rows="5"
 					className=" mb-5 p-2 border-b-4 border-yellow-400 rounded-md outline-none focus:border-2 shadow-md md:w-1/2 text-indigo-800 font-medium"
+					resize="none"
 				></textarea>
 				<Button
 					text="Enviar"
